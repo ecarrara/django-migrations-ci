@@ -8,6 +8,11 @@ def test_shell_ok():
     assert b"\nREADME.md\n" in stdout
 
 
+def test_shell_with_args():
+    stdout = shell.exec("ls -a")
+    assert b"\nREADME.md\n" in stdout
+
+
 def test_shell_error():
     with pytest.raises(shell.MigrateCIShellException, match=r"oof.+not found"):
         shell.exec("oof")
